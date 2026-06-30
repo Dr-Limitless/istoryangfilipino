@@ -21,7 +21,16 @@
   display: none;
 }
 
-
+.nav__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-image: radial-gradient(circle, var(--ink) 2px, transparent 2.3px);
+  transition: opacity var(--dur-std) var(--ease-std), transform var(--dur-std) var(--ease-std);
+}
 
 .nav.is-scrolled .nav__sprocket {
   background-image: radial-gradient(circle, var(--ink) 2px, transparent 2.3px);

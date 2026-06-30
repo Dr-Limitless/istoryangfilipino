@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="hero__split">
         <div className="hero__text">
           <h1 className="hero__title">
-            <span className="hero__title-line">Istoryang</span>
+            <span className="hero__title-line">Storyang</span>
             <span className="hero__title-line hero__title-line--invert">Filipino</span>
           </h1>
 
@@ -19,7 +19,7 @@ export default function Hero() {
           </p>
 
           <a href="#mga-kwento" className="hero__cue">
-            <SunMark size={20} />
+            
             <span>Simulan</span>
           </a>
         </div>

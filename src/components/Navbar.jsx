@@ -20,9 +20,9 @@ export default function Navbar() {
       <div className="nav__sprocket" aria-hidden="true" />
       <div className="container nav__inner">
         <Link to="/" className="nav__brand">
-          <SunMark size={22} className="nav__icon" />
+          <img src="/storyangfilipino logo.png" alt="Storyang Filipino " className="nav__logo" />
           <span className="nav__wordmark">
-            Istoryang <strong>Filipino</strong>
+            Storyang <strong>Filipino</strong>
           </span>
         </Link>
       </div>

@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="footer__col footer__col--brand">
           <div className="footer__brand">
             <SunMark size={20} className="footer__icon" />
-            <span>Istoryang Filipino</span>
+            <span>Storyang Filipino</span>
           </div>
           <p className="footer__desc">
             Isang dokumentaryong arkibo ng tatlong kwentong Pilipino — itinago sa pelikula,
@@ -43,8 +43,8 @@ export default function Footer() {
       </div>
 
       <div className="container footer__bottom">
-        <p className="footer__copy">Arkibong Pelikula — bukas para sa lahat, walang login.</p>
-        <p className="footer__copy">&copy; {new Date().getFullYear()} Istoryang Filipino</p>
+        <p className="footer__copy">Bukas para sa lahat, walang login.</p>
+        <p className="footer__copy">&copy; {new Date().getFullYear()} Storyang Filipino</p>
       </div>
     </footer>
   );
