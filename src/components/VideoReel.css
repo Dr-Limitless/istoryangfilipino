@@ -1,0 +1,69 @@
+/* ============================================================
+   VIDEO REEL — Modern Dark UI (Music Player Theme)
+   ============================================================ */
+
+.reel {
+  padding: 80px 0 64px;
+  background: #101014; /* Deep dark slate background */
+}
+
+.reel__head {
+  padding-bottom: 32px;
+}
+
+.reel__head .eyebrow {
+  margin-bottom: 10px;
+  display: block;
+  color: #4C6FFF; /* Vibrant blue accent */
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+
+.reel__heading {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.reel__intro {
+  margin-top: 14px;
+  max-width: 60ch;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #A0A0B0; /* Light grayish-blue for readability */
+}
+
+/* Hide the archival sprocket strip to keep the UI clean */
+.reel__sprocket {
+  display: none; 
+}
+
+/* Transformed from a brutalist connected grid to a modern spaced grid */
+.reel__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; /* Added spacing between cards instead of hard borders */
+  border-left: none; /* Removed the harsh solid border */
+}
+
+@media (max-width: 900px) {
+  .reel__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .reel__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}

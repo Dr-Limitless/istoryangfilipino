@@ -1,0 +1,15 @@
+rules_version = '2';
+
+// Istoryang Filipino has no login or registration, so there is no
+// concept of a signed-in user anywhere in this app. The "videos"
+// collection is public read-only: anyone can load the 3 videos,
+// nobody (not even from the browser) can write to it. Add or edit
+// videos from the Firebase console instead.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /videos/{videoId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

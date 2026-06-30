@@ -1,0 +1,120 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  /* Deep dark slate background matching the image */
+  background: #101014; 
+  border-bottom: 1px solid #1c1c24;
+  transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.nav.is-scrolled {
+  background: rgba(16, 16, 20, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  border-bottom-color: #23232d;
+}
+
+.nav__sprocket {
+  display: none;
+}
+
+
+
+.nav.is-scrolled .nav__sprocket {
+  background-image: radial-gradient(circle, var(--ink) 2px, transparent 2.3px);
+  opacity: 0.35;
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 0;
+  transition: padding 0.3s ease;
+}
+
+.nav.is-scrolled .nav__inner {
+  padding: 16px 0;
+}
+
+.nav__brand {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.nav__brand::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width var(--dur-std) var(--ease-std);
+}
+
+.nav__brand:hover::after,
+.nav__brand:focus-visible::after {
+  width: 100%;
+}
+
+.nav__brand:focus-visible {
+  outline: 2px solid #4C6FFF; /* Accent Blue */
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.nav__icon {
+  color: #FFFFFF;
+  flex-shrink: 0;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav__brand:hover .nav__icon {
+  color: #4C6FFF; /* Icon turns blue on hover */
+  transform: scale(1.1);
+}
+.nav__wordmark {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: #FFFFFF;
+  transition: color 0.3s ease;
+}
+
+.nav__brand:hover .nav__wordmark {
+  letter-spacing: 0.03em;
+}
+
+/* Blue accent for the strong tag */
+.nav__wordmark strong {
+  color: #4C6FFF; 
+  font-weight: 700;
+}
+
+.nav__meta {
+  display: none;
+}
+
+.nav__tag {
+  color: var(--nav-fg);
+  opacity: 0.78;
+  padding-left: 14px;
+  border-left: var(--border-w-sm) solid currentColor;
+  transition: color var(--dur-std) var(--ease-std), opacity var(--dur-std) var(--ease-std);
+}
+
+@media (min-width: 640px) {
+  .nav__meta {
+    display: flex;
+  }
+}

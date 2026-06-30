@@ -1,0 +1,162 @@
+.hero {
+  position: relative;
+  min-height: 85vh; 
+  display: flex;
+  align-items: center; /* Center content vertically to match the reference */
+  background: #101014; /* Deep dark slate background */
+  border: none;
+  overflow: hidden;
+}
+
+.hero__split {
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.hero__text {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 4%;
+  margin-top: 8vh; 
+  margin-left: clamp(16px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  padding: 7px 14px;
+  border: var(--border-w-sm) solid var(--paper);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+}
+
+.hero__badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero__title {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: none; 
+  color: #FFFFFF;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.8); /* Ensures text readability over images */
+}
+.hero__title-line {
+  display: block;
+}
+
+.hero__title-line--invert {
+  color: #4C6FFF; /* The vibrant blue accent from the reference */
+  background: transparent;
+  font-style: normal; /* Removed italics for a cleaner, modern look */
+}
+
+.hero__sub {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #A0A0B0; /* Light grayish-blue for secondary text */
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 48ch;
+}
+
+.hero__cue {
+  align-self: flex-start; 
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #4C6FFF; 
+  color: #FFFFFF;
+  border: none;
+  border-radius: 100px; /* Pill shape */
+  padding: 14px 32px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  box-shadow: 0 8px 24px rgba(76, 111, 255, 0.35); /* Subtle blue glow */
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto;
+}
+
+.hero__cue svg {
+  transition: transform 0.3s ease;
+}
+
+.hero__cue:hover,
+.hero__cue:focus-visible {
+  background: #3B5BDB; /* Slightly darker blue on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(76, 111, 255, 0.45);
+  color: #FFFFFF;
+}
+
+.hero__cue:hover svg,
+.hero__cue:focus-visible svg {
+  transform: rotate(90deg); /* Maintained your original icon rotation */
+}
+
+.hero__cue:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 4px;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 70vh;
+  }
+  .hero__text {
+    margin: 0;
+    max-width: none;
+    padding: 0 20px;
+    padding-bottom: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 65vh;
+  }
+  .hero__title {
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+  }
+  .hero__sub {
+    font-size: 1rem;
+  }
+  .hero__text {
+    padding-bottom: 100px;
+  }
+}

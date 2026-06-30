@@ -1,0 +1,163 @@
+/* ============================================================
+   VIDEO MODAL — Modern Dark UI (Music Player Theme)
+   ============================================================ */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.modal__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal__panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  /* Slightly lighter than the main #101014 background for elevation */
+  background: #181820; 
+  border: 1px solid #282835;
+  border-radius: 12px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+}
+
+.modal__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px 24px 0;
+}
+
+.modal__title {
+  margin-top: 8px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+.modal__close {
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%; /* Circular button */
+  color: #FFFFFF;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  background: #4C6FFF; /* Vibrant blue */
+  transform: scale(1.05);
+}
+
+.modal__tabs {
+  display: flex;
+  width: 100%;
+  margin-top: 24px;
+  border-bottom: 1px solid #282835;
+}
+
+.modal__tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  color: #A0A0B0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none; /* Removed uppercase for a more modern app feel */
+  transition: color 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+
+.modal__tab:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: #FFFFFF;
+}
+
+.modal__tab.is-active {
+  background: rgba(76, 111, 255, 0.1); /* Light blue tint */
+  color: #4C6FFF; /* Vibrant blue text */
+  box-shadow: inset 0 -2px 0 #4C6FFF; /* Sleek bottom border indicator */
+}
+
+.modal__body {
+  padding: 24px;
+}
+
+.modal__player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+  border-radius: 8px; /* Softened edges for the video player */
+  overflow: hidden;
+}
+
+.modal__player iframe,
+.modal__player video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.modal__desc {
+  margin-top: 20px;
+  color: #A0A0B0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 560px) {
+  .modal__head,
+  .modal__body {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .modal {
+    padding: 10px;
+  }
+  .modal__head,
+  .modal__body {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .modal__tab {
+    padding: 12px 10px;
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+}

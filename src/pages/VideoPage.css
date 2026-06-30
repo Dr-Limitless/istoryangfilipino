@@ -1,0 +1,144 @@
+.vpage {
+  padding: 36px 0 80px;
+  min-height: 70vh;
+  background: var(--paper);
+}
+
+.vpage__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 32px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 2px;
+}
+
+.vpage__head {
+  margin-bottom: 28px;
+}
+
+.vpage__title {
+  font-size: clamp(2.4rem, 7vw, 4rem);
+  margin-top: 10px;
+}
+
+.vpage__tabs {
+  display: flex;
+  width: fit-content;
+  border-top: var(--border-w) solid var(--ink);
+  border-bottom: var(--border-w) solid var(--ink);
+  margin-bottom: 28px;
+}
+
+.vpage__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: var(--paper);
+  border: none;
+  border-right: var(--border-w) solid var(--ink);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.vpage__tab:last-child {
+  border-right: none;
+}
+
+.vpage__tab.is-active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.vpage__player {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: var(--border-w) solid var(--ink);
+}
+
+.vpage__player iframe,
+.vpage__player video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.vpage__desc {
+  margin-top: 20px;
+  max-width: 60ch;
+  color: var(--fog);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.vpage__missing {
+  padding: 60px 0;
+}
+
+.vpage__missing h1 {
+  font-size: 2.6rem;
+  margin: 14px 0;
+}
+
+.vpage__missing p:last-child {
+  color: var(--fog);
+  font-weight: 500;
+}
+
+.vpage__others {
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: var(--border-w) solid var(--ink);
+}
+
+.vpage__others-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  border: var(--border-w) solid var(--ink);
+  width: fit-content;
+}
+
+.vpage__other {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-right: var(--border-w) solid var(--ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.vpage__other:last-child {
+  border-right: none;
+}
+
+.vpage__other span {
+  font-family: var(--font-display);
+  color: var(--fog);
+}
+
+.vpage__other:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.vpage__other:hover span {
+  color: var(--paper);
+}

@@ -1,0 +1,223 @@
+/* ============================================================
+   ISTORYANG FILIPINO — Modern Dark UI (Music Player Theme)
+   ============================================================ */
+
+:root {
+  /* ---- core palette -------------------------------------- */
+  --bg-base: #101014;       /* Deep dark slate background */
+  --surface: #181820;       /* Slightly lighter for cards/modals */
+  --surface-hover: #23232d; /* Hover state for surfaces */
+  --border-color: #282835;  /* Subtle, dark borders */
+
+  --text-main: #FFFFFF;     /* Primary text */
+  --text-muted: #A0A0B0;    /* Secondary/tertiary text */
+
+  --accent: #4C6FFF;        /* Vibrant blue accent */
+  --accent-hover: #3B5BDB;  /* Darker blue for hover states */
+
+  /* ---- legacy aliases (safeguards for older components) ----- */
+  --paper: var(--bg-base);
+  --paper-dim: var(--surface);
+  --paper-deep: var(--border-color);
+  --ink: var(--text-main);
+  --ink-soft: var(--text-muted);
+  --fog: var(--text-muted);
+  --fog-quiet: var(--text-muted);
+  --accent-red: var(--accent); 
+  --accent-deep: var(--accent-hover);
+  --accent-wash: rgba(76, 111, 255, 0.1);
+
+  /* ---- type ------------------------------------------------ */
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --fs-eyebrow: 0.85rem;
+  --fs-body: 1rem;
+  --fs-lg: 1.1rem;
+  --fs-h3: 1.5rem;
+  --fs-h2: clamp(2.2rem, 5vw, 3rem);
+  --fs-h1: clamp(3.5rem, 8vw, 5.5rem);
+  --lh-tight: 1.1;
+  --lh-copy: 1.6;
+
+  /* ---- spacing scale (4px base) ----------------------------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+
+  /* ---- layout ------------------------------------------------ */
+  --container: 1280px;
+  --edge: clamp(16px, 4vw, 48px);
+  --radius: 8px; /* Softened edges for modern app feel */
+  --border-w: 1px;
+  --border-w-sm: 1px;
+
+  /* ---- elevation --------------------------------------------- */
+  --shadow-stamp: 0 12px 24px rgba(0, 0, 0, 0.4);
+  --shadow-stamp-accent: 0 12px 24px rgba(76, 111, 255, 0.3);
+
+  /* ---- motion ------------------------------------------------ */
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 0.2s;
+  --dur-std: 0.3s;
+
+  /* ---- z-index scale ------------------------------------------ */
+  --z-nav: 100;
+  --z-modal: 1000;
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: var(--radius);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: none; /* Modernized to normal casing */
+  line-height: var(--lh-tight);
+  color: var(--text-main);
+}
+
+p {
+  margin: 0;
+}
+
+hr {
+  border: none;
+  border-top: var(--border-w) solid var(--border-color);
+  margin: var(--sp-6) 0;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* sleek modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-hover);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.eyebrow--accent {
+  color: var(--accent);
+}
+
+/* modernized pill-shaped tag/badge */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 4px 12px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border-radius: 100px;
+  background: var(--accent-wash);
+  color: var(--accent);
+  border: 1px solid rgba(76, 111, 255, 0.2);
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: var(--edge);
+  padding-right: var(--edge);
+}
+
+.section--alt {
+  background: var(--surface);
+}
+
+.stamp {
+  box-shadow: var(--shadow-stamp);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --container: 100%;
+  }
+}
