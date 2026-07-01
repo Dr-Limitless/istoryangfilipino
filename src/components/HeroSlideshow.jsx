@@ -30,31 +30,31 @@ export default function HeroSlideshow() {
         style={{ transform: `translateX(-${index * 100}%)` }}
         aria-hidden="true"
       >
-        {heroSlides.map((slide) => (
-          <div className="hslide__frame" key={slide.id}>
-            <img src={slide.src} alt={slide.alt} loading="eager" />
-          </div>
-        ))}
+        {heroSlides.map((slide) => {
+          const isVideo = /\.(mp4|webm|mov)$/i.test(slide.src);
+          return (
+            <div className="hslide__frame" key={slide.id}>
+              {isVideo ? (
+                <video
+                  src={slide.src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-label={slide.alt}
+                />
+              ) : (
+                <img src={slide.src} alt={slide.alt} loading="eager" />
+              )}
+            </div>
+          );
+        })}
       </div>
 
       <div className="hslide__scrim" aria-hidden="true" />
 
-      <button
-        type="button"
-        className="hslide__arrow hslide__arrow--left"
-        onClick={prev}
-        aria-label="Nakaraang larawan"
-      >
-        <ChevronLeft size={24} strokeWidth={2.5} />
-      </button>
-      <button
-        type="button"
-        className="hslide__arrow hslide__arrow--right"
-        onClick={next}
-        aria-label="Susunod na larawan"
-      >
-        <ChevronRight size={24} strokeWidth={2.5} />
-      </button>
+      
     </div>
   );
 }

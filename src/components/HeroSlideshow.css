@@ -43,45 +43,6 @@
   pointer-events: none;
 }
 
-/* Redesigned to be sleek, circular, semi-transparent buttons instead of brutalist squares */
-.hslide__arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 20;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(16, 16, 20, 0.5); /* Frosted dark background */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  color: #FFFFFF;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.hslide__arrow:hover {
-  background: #4C6FFF; /* Vibrant blue accent on hover */
-  transform: translateY(-50%) scale(1.05);
-  box-shadow: 0 8px 24px rgba(76, 111, 255, 0.4);
-}
-
-.hslide__arrow:focus-visible {
-  outline: 2px solid #FFFFFF;
-  outline-offset: 3px;
-}
-
-.hslide__arrow--left {
-  left: 24px;
-}
-
-.hslide__arrow--right {
-  right: 24px;
-}
 
 /* Dots styling kept intact just in case you use them later, updated to match theme */
 .hslide__dots {

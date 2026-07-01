@@ -13,7 +13,7 @@ export default function Footer() {
             <span>Storyang Filipino</span>
           </div>
           <p className="footer__desc">
-            Isang dokumentaryong arkibo ng tatlong kwentong Pilipino — itinago sa pelikula,
+            Tatlong kwento,
             handang ibahagi. Libreng panoorin, walang kailangang account.
           </p>
         </div>
