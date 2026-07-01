@@ -6,6 +6,7 @@
 
 import { initializeApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -17,6 +18,17 @@ const firebaseConfig = {
 };
 
 const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+
+// App Check — proves requests come from this actual deployed site, not a
+// script hitting Firestore directly. Since the "videos" collection allows
+// public reads with no auth, this is the main guard against scraping/abuse.
+// Requires VITE_RECAPTCHA_SITE_KEY from Firebase Console > App Check.
+if (import.meta.env.VITE_RECAPTCHA_SITE_KEY) {
+  initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider(import.meta.env.VITE_RECAPTCHA_SITE_KEY),
+    isTokenAutoRefreshEnabled: true,
+  });
+}
 
 export const db = getFirestore(app);
 export default app;
