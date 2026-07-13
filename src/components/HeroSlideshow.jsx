@@ -25,15 +25,14 @@ export default function HeroSlideshow() {
 
   return (
     <div className="hslide">
-      <div
-        className="hslide__track"
-        style={{ transform: `translateX(-${index * 100}%)` }}
-        aria-hidden="true"
-      >
-        {heroSlides.map((slide) => {
+      <div className="hslide__stage" aria-hidden="true">
+        {heroSlides.map((slide, i) => {
           const isVideo = /\.(mp4|webm|mov)$/i.test(slide.src);
           return (
-            <div className="hslide__frame" key={slide.id}>
+            <div
+              className={`hslide__frame${i === index ? " is-active" : ""}`}
+              key={slide.id}
+            >
               {isVideo ? (
                 <video
                   src={slide.src}
@@ -54,7 +53,7 @@ export default function HeroSlideshow() {
 
       <div className="hslide__scrim" aria-hidden="true" />
 
-      
+
     </div>
   );
 }

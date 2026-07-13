@@ -23,7 +23,7 @@ export default function VideoReel() {
     <section className="reel" id="mga-kwento">
       <div className="container">
         <div className="reel__head">
-          
+          <span className="reel__eyebrow">Mga Kwento</span>
           <h2 className="reel__heading">Piliin ang Kwento</h2>
           <p className="reel__intro">
             Tatlong kwento, Panoorin online,
@@ -36,8 +36,14 @@ export default function VideoReel() {
 
       <div className="container">
         <div className="reel__grid">
-          {videos.map((video) => (
-            <VideoCard key={video.id} video={video} onWatch={openWatch} onShowQr={openQr} />
+          {videos.map((video, i) => (
+            <div
+              className="reel__cell"
+              key={video.id}
+              style={{ "--reveal-delay": `${i * 0.09}s` }}
+            >
+              <VideoCard video={video} onWatch={openWatch} onShowQr={openQr} />
+            </div>
           ))}
         </div>
       </div>

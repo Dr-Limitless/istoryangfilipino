@@ -1,11 +1,25 @@
 .hero {
   position: relative;
-  min-height: 85vh; 
+  min-height: 85vh;
   display: flex;
   align-items: center; /* Center content vertically to match the reference */
   background: #101014; /* Deep dark slate background */
   border: none;
   overflow: hidden;
+}
+
+/* Ambient accent glow bleeding in from the media side for depth */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 55%;
+  height: 90%;
+  background: radial-gradient(circle, rgba(76, 111, 255, 0.18), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero__split {

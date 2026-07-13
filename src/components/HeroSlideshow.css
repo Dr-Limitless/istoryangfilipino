@@ -9,28 +9,37 @@
   z-index: 0;
 }
 
-.hslide__track {
+.hslide__stage {
   position: absolute;
   inset: 0;
-  display: flex;
   width: 100%;
   height: 100%;
-  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
+/* Every frame is stacked in the same spot; we crossfade between them. */
 .hslide__frame {
-  flex: 0 0 100%;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1.2s ease, transform 6s ease-out;
+  pointer-events: none;
 }
 
-.hslide__frame img {
+.hslide__frame.is-active {
+  opacity: 1;
+  transform: scale(1); /* slow Ken Burns settle while visible */
+}
+
+.hslide__frame img,
+.hslide__frame video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
   opacity: 0.55; /* Darkened slightly to ensure text pops */
-  transition: opacity 0.9s ease;
 }
 
 .hslide__scrim {
@@ -108,7 +117,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hslide__track {
-    transition: none;
+  .hslide__frame {
+    transition: opacity 0.4s ease;
+    transform: none;
+  }
+  .hslide__frame.is-active {
+    transform: none;
   }
 }

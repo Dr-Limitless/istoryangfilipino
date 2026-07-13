@@ -11,15 +11,31 @@
   padding-bottom: 32px;
 }
 
-.reel__head .eyebrow {
-  margin-bottom: 10px;
-  display: block;
-  color: #4C6FFF; /* Vibrant blue accent */
+/* Pill-shaped section label */
+.reel__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: rgba(76, 111, 255, 0.1);
+  border: 1px solid rgba(76, 111, 255, 0.25);
+  color: #4C6FFF;
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+}
+
+.reel__eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4C6FFF;
+  box-shadow: 0 0 8px rgba(76, 111, 255, 0.8);
 }
 
 .reel__heading {
@@ -30,6 +46,17 @@
   letter-spacing: -0.02em;
   line-height: 1.1;
   margin: 0;
+}
+
+/* Short accent underline for the heading */
+.reel__heading::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin-top: 16px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #4C6FFF, transparent);
 }
 
 .reel__intro {
@@ -52,6 +79,29 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px; /* Added spacing between cards instead of hard borders */
   border-left: none; /* Removed the harsh solid border */
+}
+
+/* Staggered entrance for each card */
+.reel__cell {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: reelReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--reveal-delay, 0s);
+}
+
+@keyframes reelReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel__cell {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (max-width: 900px) {
