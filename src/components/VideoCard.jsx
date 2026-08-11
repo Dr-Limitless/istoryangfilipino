@@ -1,7 +1,7 @@
-import { Play, QrCode } from "lucide-react";
+import { Check, ListChecks, Play, QrCode } from "lucide-react";
 import "./VideoCard.css";
 
-export default function VideoCard({ video, onWatch, onShowQr }) {
+export default function VideoCard({ video, progress, onWatch, onShowQr, onActivities }) {
   return (
     <article className="vcard">
       <div className="vcard__poster">
@@ -24,8 +24,10 @@ export default function VideoCard({ video, onWatch, onShowQr }) {
       </div>
 
       <div className="vcard__body">
+        <div className={`vcard__status ${progress?.completed ? "is-complete" : ""}`}>{progress?.completed && <Check size={12} />}{progress?.label || "Hindi pa nasisimulan"}</div>
         <h3 className="vcard__title">{video.title}</h3>
         <p className="vcard__desc">{video.description}</p>
+        <div className="vcard__progress" aria-label={`${progress?.percent || 0}% kumpleto`}><span style={{ width: `${progress?.percent || 0}%` }} /></div>
       </div>
 
       <div className="vcard__actions">
@@ -42,6 +44,7 @@ export default function VideoCard({ video, onWatch, onShowQr }) {
           <QrCode size={15} strokeWidth={2} />
           QR
         </button>
+        {progress?.watched && <button type="button" className="vcard__btn" onClick={() => onActivities(video)}><ListChecks size={15} /> Gawain</button>}
       </div>
     </article>
   );

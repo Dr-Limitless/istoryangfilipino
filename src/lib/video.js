@@ -11,7 +11,8 @@ export function isYouTubeUrl(url = "") {
 
 export function toYouTubeEmbed(url = "") {
   const id = getYouTubeId(url);
-  return id ? `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1` : url;
+  const origin = typeof window !== "undefined" ? `&origin=${encodeURIComponent(window.location.origin)}` : "";
+  return id ? `https://www.youtube.com/embed/${id}?rel=0&modestbranding=1&enablejsapi=1${origin}` : url;
 }
 
 const ROMAN = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];

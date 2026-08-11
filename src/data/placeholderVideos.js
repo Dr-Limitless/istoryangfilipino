@@ -1,47 +1,38 @@
-// Fallback / sample data.
-//
-// The app reads from the Firestore collection "videos" first. If that
-// collection is empty (e.g. on first run, before the 3 real videos have
-// been added), it falls back to this local array so the site is never
-// blank during development.
-//
-// To add your real videos, create documents in Firestore with this same
-// shape — see README.md for the exact steps. Replace `videoUrl` with a
-// direct file URL (Firebase Storage) or a YouTube watch/embed URL, and
-// `thumbnail` with a direct image URL (e.g. from DigitalOcean Spaces).
+// Local fallback data used when the Firestore `videos` collection is empty.
+// The entries intentionally mirror the three stories in the activity system.
 
 export const placeholderVideos = [
   {
-    id: "unang-sigaw",
+    id: "ang-ama",
     episode: 1,
-    title: "Ang Unang Sigaw",
-    era: "1896",
+    title: "Ang Ama",
+    era: "Kwentong Filipino",
     duration: "—",
     description:
-      "Sample placeholder lang ito. Palitan ng tunay na kasaysayan, deskripsyon, at video link mula sa inyong Firestore collection.",
+      "Isang kuwentong tumatalakay sa pagmamahal, pagsisisi, galit, at kapatawaran sa loob ng pamilya.",
     videoUrl: "https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    thumbnail: "https://picsum.photos/seed/unang-sigaw/640/360",
+    thumbnail: "https://picsum.photos/seed/ang-ama/640/360",
   },
   {
-    id: "buwan-ng-bayani",
+    id: "bangkang-papel",
     episode: 2,
-    title: "Buwan ng mga Bayani",
-    era: "1898",
+    title: "Bangkang Papel",
+    era: "Kwentong Filipino",
     duration: "—",
     description:
-      "Sample placeholder lang ito. Palitan ng tunay na kasaysayan, deskripsyon, at video link mula sa inyong Firestore collection.",
+      "Isang paglalakbay sa pangarap, alaala, kabataan, at kalayaang sinasagisag ng munting bangkang papel.",
     videoUrl: "https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    thumbnail: "https://picsum.photos/seed/buwan-ng-bayani/640/360",
+    thumbnail: "https://picsum.photos/seed/bangkang-papel/640/360",
   },
   {
-    id: "mula-sa-abo",
+    id: "pamana",
     episode: 3,
-    title: "Mula sa Abo",
-    era: "1986",
+    title: "Pamana",
+    era: "Kwentong Filipino",
     duration: "—",
     description:
-      "Sample placeholder lang ito. Palitan ng tunay na kasaysayan, deskripsyon, at video link mula sa inyong Firestore collection.",
+      "Isang kuwentong nagbibigay-halaga sa lupain, pagsasaka, kabuhayan, kasipagan, at pag-asa.",
     videoUrl: "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    thumbnail: "https://picsum.photos/seed/mula-sa-abo/640/360",
+    thumbnail: "https://picsum.photos/seed/pamana/640/360",
   },
 ];
