@@ -105,16 +105,6 @@
   color: #FFFFFF;
 }
 
-.modal__tab:disabled {
-  background: transparent;
-  color: #676773;
-  cursor: not-allowed;
-}
-
-.modal__tab:disabled svg {
-  color: #777784;
-}
-
 .modal__tab.is-active {
   background: rgba(255, 255, 255, 0.07);
   color: #FFFFFF;
@@ -124,29 +114,6 @@
 .modal__tab svg,
 .modal__close svg {
   color: #FFFFFF;
-}
-
-.modal__unlock-note {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  min-height: 36px;
-  padding: 7px 16px;
-  border-bottom: 1px solid #282835;
-  background: #141419;
-  color: #8e8e9a;
-  font-size: .76rem;
-  font-weight: 650;
-}
-
-.modal__unlock-note.is-unlocked {
-  background: linear-gradient(90deg, rgba(93, 63, 211, .2), rgba(13, 181, 197, .14));
-  color: #dcd4ff;
-}
-
-.modal__unlock-note.is-unlocked svg {
-  color: #b9a7ff;
 }
 
 .modal__body {
@@ -241,15 +208,6 @@
     flex: 1 0 auto;
     padding: 13px 12px;
     white-space: nowrap;
-  }
-
-  .modal__unlock-note {
-    position: sticky;
-    top: 50px;
-    z-index: 19;
-    min-height: 38px;
-    background: rgba(20, 20, 25, .96);
-    backdrop-filter: blur(12px);
   }
 
   .modal__body {

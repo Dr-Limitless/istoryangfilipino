@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { X, Play, QrCode, ListChecks, Lock, Sparkles } from "lucide-react";
+import { X, Play, QrCode, ListChecks } from "lucide-react";
 import QRPanel from "./QRPanel";
 import ActivitiesPanel, { ActivityComplete } from "./ActivitiesPanel";
 import { isYouTubeUrl, toYouTubeEmbed } from "../lib/video";
@@ -25,7 +25,7 @@ export default function VideoModal({ video, initialView = "watch", onClose, onPr
     setView(initialView);
     setActivitiesComplete(Boolean(savedActivity?.completed));
     setActivityResult(savedActivity?.result ?? null);
-    setHasFinishedVideo(Boolean(savedVideo?.finished || savedActivity));
+    setHasFinishedVideo(Boolean(savedVideo?.finished));
     setWatchPercent(savedVideo?.percent ?? (savedVideo?.finished ? 1 : 0));
     watchedSecondsRef.current = savedVideo?.watchedSeconds ?? 0;
     videoDurationRef.current = savedVideo?.duration ?? 0;
@@ -188,16 +188,10 @@ export default function VideoModal({ video, initialView = "watch", onClose, onPr
             aria-selected={view === "activities"}
             className={`modal__tab ${view === "activities" ? "is-active" : ""}`}
             onClick={() => setView("activities")}
-            disabled={!hasFinishedVideo}
-            title={!hasFinishedVideo ? "Tapusin muna ang video para mabuksan ang mga aktibidad." : "Buksan ang mga aktibidad"}
+            title="Buksan ang mga aktibidad"
           >
-            {hasFinishedVideo ? <ListChecks size={15} strokeWidth={2} /> : <Lock size={14} strokeWidth={2} />} Mga Aktibidad
+            <ListChecks size={15} strokeWidth={2} /> Mga Aktibidad
           </button>
-        </div>
-
-        <div className={`modal__unlock-note ${hasFinishedVideo ? "is-unlocked" : ""}`} role="status">
-          {hasFinishedVideo ? <Sparkles size={15} aria-hidden="true" /> : <Lock size={14} aria-hidden="true" />}
-          {hasFinishedVideo ? "Bukas na ang Mga Aktibidad!" : `Panoorin ang hindi bababa sa 90% ng video — ${Math.round(watchPercent * 100)}% na.`}
         </div>
 
         <div className="modal__body">
@@ -233,7 +227,7 @@ export default function VideoModal({ video, initialView = "watch", onClose, onPr
             </>
           )}
           {view === "qr" && <QRPanel video={video} />}
-          {hasFinishedVideo && !activitiesComplete && (
+          {view === "activities" && !activitiesComplete && (
             <div hidden={view !== "activities"}>
               <ActivitiesPanel
                 key={video.id}

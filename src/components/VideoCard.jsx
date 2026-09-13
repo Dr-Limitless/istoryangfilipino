@@ -44,7 +44,7 @@ export default function VideoCard({ video, progress, onWatch, onShowQr, onActivi
           <QrCode size={15} strokeWidth={2} />
           QR
         </button>
-        {progress?.watched && <button type="button" className="vcard__btn" onClick={() => onActivities(video)}><ListChecks size={15} /> Gawain</button>}
+        <button type="button" className="vcard__btn" onClick={() => onActivities(video)}><ListChecks size={15} /> Gawain</button>
       </div>
     </article>
   );
