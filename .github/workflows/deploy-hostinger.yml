@@ -71,7 +71,8 @@ jobs:
           port: 21
           security: strict
           local-dir: ./dist/
-          server-dir: ./public_html/
+          # This site-specific FTP account is already rooted at public_html.
+          server-dir: ./
           state-name: .istoryangfilipino-deploy-state.json
           dry-run: ${{ !inputs.deploy }}
           dangerous-clean-slate: false
@@ -80,4 +81,3 @@ jobs:
             **/.git*/**
             **/node_modules/**
             **/.htaccess
-

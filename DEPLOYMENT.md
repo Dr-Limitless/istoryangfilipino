@@ -1,8 +1,9 @@
 # Hostinger deployment
 
 This project deploys the contents of `dist` to the existing site's
-`public_html` folder. The domain, DNS, and Firebase video collection stay
-on their existing services.
+`public_html` folder. The site-specific FTP account opens directly inside
+`public_html`, so the workflow's remote directory is `./`. The domain, DNS,
+and Firebase video collection stay on their existing services.
 
 ## Connection settings
 
@@ -28,7 +29,8 @@ These values are included in the browser bundle; FTP credentials remain secrets.
 2. In GitHub Actions, select **Deploy to Hostinger** → **Run workflow**.
 3. Choose `main` and leave **Upload to the live website** unchecked. This
    builds and previews the file changes without uploading them.
-4. Confirm the FTP account's `public_html` is the existing website root.
+4. Confirm the site-specific FTP account opens directly in the existing
+   website's `public_html` root.
 5. Run again with **Upload to the live website** checked to deploy.
 6. Check the homepage, actual video playback, activities on an unwatched
    story, and a direct `/video/ang-ama` URL. Clear Hostinger cache if needed.
