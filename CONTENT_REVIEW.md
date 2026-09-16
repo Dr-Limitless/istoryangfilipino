@@ -1,39 +1,54 @@
-# Additional activity content — client review required
+# Client-provided activity additions
 
-The original five items are retained in each story. These five additions per activity are **drafts based on the current themes**, not words verified against the film scripts. Please confirm their suitability with the client before publishing. Each story now has 10 vocabulary items and 10 hidden words.
+Source: “IDADAGDAG SA GAWAIN,” supplied by the client on 2026-09-16. The original five items remain, and these five additions complete the ten-item activities for each story.
 
 ## Ang Ama
 
 Vocabulary additions:
 
-- **Dalamhati** — Matinding lungkot na dulot ng pagkawala o masakit na pangyayari.
-- **Pighati** — Mabigat na sakit ng damdamin.
-- **Hinagpis** — Matinding pagdurusa ng kalooban.
-- **Pagkalinga** — Pag-aalaga at pagbibigay ng malasakit.
-- **Pagtitimpi** — Pagpipigil sa galit o matinding damdamin.
+- **Pangungulila** — Matinding pagdadalamhati dahil sa pagkawala ng isang mahal sa buhay.
+- **Pagsamo** — Taos-pusong paghingi o pagmamakaawa.
+- **Pagtitimpi** — Pagpipigil sa galit o damdamin.
+- **Hinagpis** — Matinding kalungkutan o sakit ng kalooban.
+- **Pagpapatawad** — Pagbibigay ng kapatawaran sa nagkasala.
 
-Hidden-word additions: PAMILYA, MALASAKIT, PAGKALINGA, PAGUNAWA, PAGBABAGO.
+Hidden-word additions: PANGUNGULILA, PAG-AALALA, PAGHINGI, PAG-UNAWA, PAGSASAKRIPISYO.
+
+Reflection: Sumulat ng repleksyon tungkol sa napag-aralang maikling kuwento na “Ang Ama.”
 
 ## Bangkang Papel
 
 Vocabulary additions:
 
-- **Gunita** — Alaala ng nakalipas na pangyayari.
-- **Agos** — Pagdaloy ng tubig sa isang direksiyon.
-- **Lumbay** — Damdamin ng lungkot o pangungulila.
-- **Pangungulila** — Pagkadama ng lungkot dahil sa pagkawala o pagkakalayo.
-- **Paglalayag** — Paglalakbay sa ibabaw ng tubig gamit ang sasakyang pandagat.
+- **Pagsagwan** — Paggamit ng sagwan upang mapaandar ang bangka.
+- **Daluyong** — Malaking alon sa dagat.
+- **Pampang** — Gilid ng ilog, lawa, o dagat.
+- **Paglalayag** — Paglalakbay sakay ng bangka o sasakyang-dagat.
+- **Tanawin** — Bagay o lugar na nakikita at napagmamasdan.
 
-Hidden-word additions: GUNITA, PAGASA, AGOS, PAGLALAYAG, PAGTUKLAS.
+Hidden-word additions: PAG-ASA, PAGTUKLAS, PAGLISAN, PAKIKIPAGSAPALARAN, PAGBABALIK.
+
+Reflection: Maglahad ng sariling saloobin tungkol sa mga pangyayari sa kuwento at ipaliwanag kung paano ito nakaapekto sa iyong pananaw at pag-unawa sa buhay.
 
 ## Pamana
 
 Vocabulary additions:
 
-- **Salinlahi** — Pangkat ng mga taong kabilang sa isang henerasyon.
-- **Pag-aaruga** — Maingat at mapagmahal na pag-aalaga.
-- **Ani** — Bunga o produktong nakukuha mula sa pagsasaka.
-- **Bukirin** — Malawak na lupang ginagamit sa pagtatanim.
-- **Pagpupunyagi** — Patuloy na pagsisikap upang makamit ang layunin.
+- **Pamumuhay** — Paraan ng pamumuhay ng isang tao o pangkat.
+- **Kasaganaan** — Kalagayan ng pagkakaroon ng sapat o maraming biyaya.
+- **Pagsisikap** — Matinding paggawa upang makamit ang layunin.
+- **Minana** — Bagay na natanggap mula sa mga ninuno o nakaraang henerasyon.
+- **Pagpupunyagi** — Patuloy at masigasig na pagsisikap upang makamit ang isang layunin.
 
-Hidden-word additions: SALINLAHI, PAGARUGA, ANI, BUKIRIN, PAGSISIKAP.
+Hidden-word additions: ANI, BINHI, BUKID, PAG-UNLAD, KAYAMANAN.
+
+Reflection: Sumulat ng repleksyon tungkol sa iyong natutuhan, damdamin, at aral mula sa napag-aralang maikling kuwento na “Pamana” ni Lamberto Gabriel.
+
+## Rubric sa Pagsulat ng Repleksyon
+
+- Nilalaman at Pag-unawa sa Akda — 30
+- Sariling Repleksyon at Aral — 30
+- Organisasyon ng Kaisipan — 20
+- Wastong Gamit ng Wika — 10
+- Kalinisan at Pagsunod sa Panuto — 10
+- **Kabuuan — 100**

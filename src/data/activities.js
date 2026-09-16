@@ -1,4 +1,11 @@
-export const ACTIVITY_VERSION = 2;
+export const ACTIVITY_VERSION = 3;
+export const REFLECTION_RUBRIC = [
+  { criterion: "Nilalaman at Pag-unawa sa Akda", points: 30 },
+  { criterion: "Sariling Repleksyon at Aral", points: 30 },
+  { criterion: "Organisasyon ng Kaisipan", points: 20 },
+  { criterion: "Wastong Gamit ng Wika", points: 10 },
+  { criterion: "Kalinisan at Pagsunod sa Panuto", points: 10 },
+];
 export const STORY_ACTIVITIES = {
   "ang-ama": {
     label: "Ang Ama",
@@ -8,14 +15,14 @@ export const STORY_ACTIVITIES = {
       { number: 3, word: "Naninipat", meaning: "Matamang tumitingin o nagmamasid." },
       { number: 4, word: "Kimi", meaning: "Mahiyain o hindi palakibo." },
       { number: 5, word: "Nagpupuyos", meaning: "Matinding pag-alab ng damdamin, lalo na ng galit." },
-      { number: 6, word: "Dalamhati", meaning: "Matinding lungkot na dulot ng pagkawala o masakit na pangyayari." },
-      { number: 7, word: "Pighati", meaning: "Mabigat na sakit ng damdamin." },
-      { number: 8, word: "Hinagpis", meaning: "Matinding pagdurusa ng kalooban." },
-      { number: 9, word: "Pagkalinga", meaning: "Pag-aalaga at pagbibigay ng malasakit." },
-      { number: 10, word: "Pagtitimpi", meaning: "Pagpipigil sa galit o matinding damdamin." },
+      { number: 6, word: "Pangungulila", meaning: "Matinding pagdadalamhati dahil sa pagkawala ng isang mahal sa buhay." },
+      { number: 7, word: "Pagsamo", meaning: "Taos-pusong paghingi o pagmamakaawa." },
+      { number: 8, word: "Pagtitimpi", meaning: "Pagpipigil sa galit o damdamin." },
+      { number: 9, word: "Hinagpis", meaning: "Matinding kalungkutan o sakit ng kalooban." },
+      { number: 10, word: "Pagpapatawad", meaning: "Pagbibigay ng kapatawaran sa nagkasala." },
     ],
-    words: ["PAGSISISI", "PAGMAMAHAL", "GALIT", "KAPATAWARAN", "KALUNGKUTAN", "PAMILYA", "MALASAKIT", "PAGKALINGA", "PAGUNAWA", "PAGBABAGO"],
-    reflection: "Paano makatutulong ang pagpapatawad at pagmamahal upang mapabuti ang ugnayan sa loob ng pamilya?",
+    words: ["PAGSISISI", "PAGMAMAHAL", "GALIT", "KAPATAWARAN", "KALUNGKUTAN", "PANGUNGULILA", "PAGAALALA", "PAGHINGI", "PAGUNAWA", "PAGSASAKRIPISYO"],
+    reflection: "Sumulat ng repleksyon tungkol sa napag-aralang maikling kuwento na “Ang Ama.”",
     starters: ["Natutuhan ko na ang pagpapatawad ay...", "Sa aming pamilya, maipapakita ko ang pagmamahal sa pamamagitan ng...", "Kung ako ang nasa kalagayan ng tauhan, ako ay..."],
   },
   "bangkang-papel": {
@@ -26,14 +33,14 @@ export const STORY_ACTIVITIES = {
       { number: 3, word: "Silahis", meaning: "Maninipis na guhit o sinag ng liwanag." },
       { number: 4, word: "Gulilat", meaning: "Biglang nagising o nabigla." },
       { number: 5, word: "Nagbalikwas", meaning: "Biglang bumangon mula sa pagkakahiga." },
-      { number: 6, word: "Gunita", meaning: "Alaala ng nakalipas na pangyayari." },
-      { number: 7, word: "Agos", meaning: "Pagdaloy ng tubig sa isang direksiyon." },
-      { number: 8, word: "Lumbay", meaning: "Damdamin ng lungkot o pangungulila." },
-      { number: 9, word: "Pangungulila", meaning: "Pagkadama ng lungkot dahil sa pagkawala o pagkakalayo." },
-      { number: 10, word: "Paglalayag", meaning: "Paglalakbay sa ibabaw ng tubig gamit ang sasakyang pandagat." },
+      { number: 6, word: "Pagsagwan", meaning: "Paggamit ng sagwan upang mapaandar ang bangka." },
+      { number: 7, word: "Daluyong", meaning: "Malaking alon sa dagat." },
+      { number: 8, word: "Pampang", meaning: "Gilid ng ilog, lawa, o dagat." },
+      { number: 9, word: "Paglalayag", meaning: "Paglalakbay sakay ng bangka o sasakyang-dagat." },
+      { number: 10, word: "Tanawin", meaning: "Bagay o lugar na nakikita at napagmamasdan." },
     ],
-    words: ["PANGARAP", "ALAALA", "KABATAAN", "PAGLALAKBAY", "KALAYAAN", "GUNITA", "PAGASA", "AGOS", "PAGLALAYAG", "PAGTUKLAS"],
-    reflection: "Anong pangarap o alaala noong kabataan ang nais mong dalhin sa iyong paglalakbay sa buhay?",
+    words: ["PANGARAP", "ALAALA", "KABATAAN", "PAGLALAKBAY", "KALAYAAN", "PAGASA", "PAGTUKLAS", "PAGLISAN", "PAKIKIPAGSAPALARAN", "PAGBABALIK"],
+    reflection: "Maglahad ng sariling saloobin tungkol sa mga pangyayari sa kuwento at ipaliwanag kung paano ito nakaapekto sa iyong pananaw at pag-unawa sa buhay.",
     starters: ["Ang pangarap na mahalaga sa akin ay...", "Isang alaala na nagbibigay sa akin ng lakas ay...", "Tulad ng bangkang papel, nais kong marating ang..."],
   },
   pamana: {
@@ -44,14 +51,14 @@ export const STORY_ACTIVITIES = {
       { number: 3, word: "Nangakakintal", meaning: "Malalim na naiwan o nakaukit sa alaala." },
       { number: 4, word: "Salakot", meaning: "Panakip sa ulo na ginagamit bilang proteksiyon sa araw." },
       { number: 5, word: "Linang", meaning: "Lupang sinasaka o taniman." },
-      { number: 6, word: "Salinlahi", meaning: "Pangkat ng mga taong kabilang sa isang henerasyon." },
-      { number: 7, word: "Pag-aaruga", meaning: "Maingat at mapagmahal na pag-aalaga." },
-      { number: 8, word: "Ani", meaning: "Bunga o produktong nakukuha mula sa pagsasaka." },
-      { number: 9, word: "Bukirin", meaning: "Malawak na lupang ginagamit sa pagtatanim." },
-      { number: 10, word: "Pagpupunyagi", meaning: "Patuloy na pagsisikap upang makamit ang layunin." },
+      { number: 6, word: "Pamumuhay", meaning: "Paraan ng pamumuhay ng isang tao o pangkat." },
+      { number: 7, word: "Kasaganaan", meaning: "Kalagayan ng pagkakaroon ng sapat o maraming biyaya." },
+      { number: 8, word: "Pagsisikap", meaning: "Matinding paggawa upang makamit ang layunin." },
+      { number: 9, word: "Minana", meaning: "Bagay na natanggap mula sa mga ninuno o nakaraang henerasyon." },
+      { number: 10, word: "Pagpupunyagi", meaning: "Patuloy at masigasig na pagsisikap upang makamit ang isang layunin." },
     ],
-    words: ["PAGSASAKA", "LUPAIN", "KABUHAYAN", "KASIPAGAN", "PAGASA", "SALINLAHI", "PAGARUGA", "ANI", "BUKIRIN", "PAGSISIKAP"],
-    reflection: "Anong pamana tungkol sa sipag, lupain, o kabuhayan ang nais mong ipagpatuloy sa susunod na salinlahi?",
+    words: ["PAGSASAKA", "LUPAIN", "KABUHAYAN", "KASIPAGAN", "PAGASA", "ANI", "BINHI", "BUKID", "PAGUNLAD", "KAYAMANAN"],
+    reflection: "Sumulat ng repleksyon tungkol sa iyong natutuhan, damdamin, at aral mula sa napag-aralang maikling kuwento na “Pamana” ni Lamberto Gabriel.",
     starters: ["Ang pamanang nais kong ipagpatuloy ay...", "Maipapakita ko ang kasipagan sa pamamagitan ng...", "Mahalaga ang lupa at kabuhayan dahil..."],
   },
 };
@@ -84,7 +91,8 @@ function directionClue([rowStep, colStep]) {
 }
 
 export function buildWordPuzzle(words, seed) {
-  const grid = Array.from({ length: PUZZLE_SIZE }, () => Array(PUZZLE_SIZE).fill(""));
+  const puzzleSize = Math.max(PUZZLE_SIZE, ...words.map((word) => word.length));
+  const grid = Array.from({ length: puzzleSize }, () => Array(puzzleSize).fill(""));
   const placements = [];
   const orderedWords = [...words].sort((a, b) => b.length - a.length);
 
@@ -95,11 +103,11 @@ export function buildWordPuzzle(words, seed) {
     const candidates = [];
 
     DIRECTIONS.forEach((direction) => {
-      for (let row = 0; row < PUZZLE_SIZE; row += 1) {
-        for (let col = 0; col < PUZZLE_SIZE; col += 1) {
+      for (let row = 0; row < puzzleSize; row += 1) {
+        for (let col = 0; col < puzzleSize; col += 1) {
           const endRow = row + direction[0] * (word.length - 1);
           const endCol = col + direction[1] * (word.length - 1);
-          if (endRow < 0 || endRow >= PUZZLE_SIZE || endCol < 0 || endCol >= PUZZLE_SIZE) continue;
+          if (endRow < 0 || endRow >= puzzleSize || endCol < 0 || endCol >= puzzleSize) continue;
           const fits = word.split("").every((letter, letterIndex) => {
             const current = grid[row + direction[0] * letterIndex][col + direction[1] * letterIndex];
             return !current || current === letter;

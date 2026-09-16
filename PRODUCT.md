@@ -4,7 +4,7 @@
 
 A public learning website for three stories: Ang Ama, Bangkang Papel and Pamana. The repository uses React/Vite, Firebase video metadata, browser-local activity progress and an existing anonymous Google Form submission. Hostinger hosts the deployed site. There is no video-upload interface.
 
-The user confirmed on 2026-09-15 that each story should have **10 vocabulary items and 10 word-search words**, adding five to each existing activity. The client has not yet supplied approved additional content. The user requested a **shared leaderboard using nicknames**, a **new-user guide**, **Tagalog interface copy**, and a UI enhancement using Impeccable. Activities remain available whether or not the video has finished.
+The user confirmed on 2026-09-15 that each story should have **10 vocabulary items and 10 word-search words**, adding five to each existing activity. On 2026-09-16, the client supplied the five additions for every story plus story-specific reflection instructions and a 100-point rubric. The user requested a **shared leaderboard using nicknames**, a **new-user guide**, **Tagalog interface copy**, and a UI enhancement using Impeccable. Activities remain available whether or not the video has finished.
 
 ## Learner path
 
@@ -12,7 +12,7 @@ Choose a story → optionally watch or use QR → match ten vocabulary words →
 
 ## Release dependencies
 
-Additional activity items are drafts in CONTENT_REVIEW.md; they are based on existing themes, not verified against film scripts. Shared scoring is implemented but disabled until LEADERBOARD_SETUP.md is completed in the existing Firebase project. Firebase service setup and real multi-browser scoring have not been validated against production. The user rejected the initial UI replacement and requested preservation of the original UI, plus an animated first-visit manual. Client review remains pending.
+The client-provided activity additions are recorded in CONTENT_REVIEW.md. Shared scoring is active through the existing Firebase project and the Hostinger deployment workflow. The user rejected the initial UI replacement and requested preservation of the original UI, plus an animated first-visit manual.
 
 ## Data boundaries
 

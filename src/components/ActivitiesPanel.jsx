@@ -4,13 +4,18 @@ import { loadActivityProgress, saveActivityProgress } from "../lib/progress";
 import { createAnonymousReference, submitAnonymousActivityResult } from "../lib/googleForm";
 import "./ActivitiesPanel.css";
 
-import { ACTIVITY_VERSION, getStoryContent, buildWordPuzzle, normalizeStory, hashString } from "../data/activities";
+import { ACTIVITY_VERSION, REFLECTION_RUBRIC, getStoryContent, buildWordPuzzle, normalizeStory, hashString } from "../data/activities";
 import LeaderboardEntry from "./LeaderboardEntry";
 const GAME_DURATION_SECONDS = 600;
 const STEP_LABELS = ["Talasalitaan", "Hanap-salita", "Pagninilay"];
 
 function displayPuzzleWord(word) {
-  return word === "PAGASA" ? "PAG-ASA" : word;
+  return ({
+    PAGAALALA: "PAG-AALALA",
+    PAGASA: "PAG-ASA",
+    PAGUNAWA: "PAG-UNAWA",
+    PAGUNLAD: "PAG-UNLAD",
+  })[word] || word;
 }
 
 function formatDuration(seconds = 0) {
@@ -52,7 +57,8 @@ export default function ActivitiesPanel({ video, onComplete }) {
   const [focusedCell, setFocusedCell] = useState([0, 0]);
   const [step, setStep] = useState(savedProgress?.step ?? 0);
   const [selectedVocabulary, setSelectedVocabulary] = useState(null);
-  const [matchedVocabulary, setMatchedVocabulary] = useState(savedProgress?.matchedVocabulary ?? []);
+  const [matchedVocabulary, setMatchedVocabulary] = useState(() => (savedProgress?.matchedVocabulary ?? [])
+    .filter((word) => storyContent.vocabulary.some((item) => item.word === word)));
   const [wrongVocabulary, setWrongVocabulary] = useState(null);
   const [vocabularyFeedback, setVocabularyFeedback] = useState("Pumili ng salita, pagkatapos ay piliin ang tamang kahulugan.");
   const [selectionStart, setSelectionStart] = useState(null);
@@ -378,7 +384,7 @@ export default function ActivitiesPanel({ video, onComplete }) {
         <span className="activities__saved"><CloudCheck size={14} /> {savedAt ? "Naka-save ang progreso" : "Awtomatikong nase-save"}</span>
       </div>
 
-      {savedProgress?.expanded && <p className="activity-update" role="status">May limang bagong item sa bawat gawain. Napanatili ang iyong talasalitaan at pagninilay; magsisimula muli ang hanap-salita.</p>}
+      {savedProgress?.expanded && <p className="activity-update" role="status">Na-update ang mga gawain ayon sa materyal ng guro. Napanatili ang tugmang sagot sa talasalitaan at pagninilay; magsisimula muli ang hanap-salita.</p>}
       <ol className="activities__progress" aria-label="Progreso sa mga aktibidad">
         {STEP_LABELS.map((label, index) => (
           <li key={label} className={`${index === step ? "is-current" : ""} ${index < step ? "is-done" : ""}`} aria-current={index === step ? "step" : undefined}>
@@ -484,7 +490,8 @@ export default function ActivitiesPanel({ video, onComplete }) {
             <div
               className={`word-grid word-grid--hard ${gameStatus !== "playing" ? "is-game-over" : ""}`}
               role="grid"
-              aria-label="Palaisipan ng mga nakatagong salita"
+              aria-label={`Palaisipan ng mga nakatagong salita, ${wordGrid.length} hanay at ${wordGrid.length} kolum`}
+              style={{ "--word-grid-size": wordGrid.length }}
               onPointerMove={trackWordGridPointer}
               onPointerCancel={cancelDrag}
               onPointerLeave={(event) => { if (event.pointerType === "mouse") cancelDrag(); }}
@@ -506,8 +513,8 @@ export default function ActivitiesPanel({ video, onComplete }) {
                     if (!moves[event.key]) return;
                     event.preventDefault();
                     const [dr, dc] = moves[event.key];
-                    const row = Math.max(0, Math.min(11, rowIndex + dr));
-                    const col = Math.max(0, Math.min(11, colIndex + dc));
+                    const row = Math.max(0, Math.min(wordGrid.length - 1, rowIndex + dr));
+                    const col = Math.max(0, Math.min(wordGrid.length - 1, colIndex + dc));
                     event.currentTarget.parentElement.querySelector(`[data-row="${row}"][data-col="${col}"]`)?.focus();
                   }}
                   data-word-cell="true"
@@ -547,13 +554,23 @@ export default function ActivitiesPanel({ video, onComplete }) {
         <div className="activity-card">
           <div className="activity-card__heading"><span>03</span><div><h5>Pagninilay — {storyContent.label}</h5><p>Isulat ang iyong sariling pagninilay tungkol sa kwento.</p></div></div>
           <div className="reflection-field">
-            <label htmlFor={`reflection-${video.id}`}>{storyContent.reflection}</label>
+            <label htmlFor={`reflection-${video.id}`}><strong>Panuto:</strong> {storyContent.reflection}</label>
             <div className="reflection-starters" aria-label="Mga maaaring panimula ng sagot">
               <small>Subukang simulan sa:</small>
               {storyContent.starters.map((starter) => <button type="button" key={starter} onClick={() => applySentenceStarter(starter)}>{starter}</button>)}
             </div>
             <textarea id={`reflection-${video.id}`} value={reflection} onChange={(event) => setReflection(event.target.value)} placeholder="Isulat dito ang iyong sagot..." rows={6} />
             <small>{reflection.trim().length} / 20 karakter na kailangan</small>
+            <section className="reflection-rubric" aria-labelledby={`rubric-${video.id}`}>
+              <div><h6 id={`rubric-${video.id}`}>Rubric sa Pagsulat ng Repleksyon</h6><span>100 puntos</span></div>
+              <table>
+                <thead><tr><th scope="col">Pamantayan</th><th scope="col">Puntos</th></tr></thead>
+                <tbody>
+                  {REFLECTION_RUBRIC.map(({ criterion, points }) => <tr key={criterion}><td>{criterion}</td><td>{points}</td></tr>)}
+                  <tr className="reflection-rubric__total"><th scope="row">Kabuuan</th><td>100</td></tr>
+                </tbody>
+              </table>
+            </section>
           </div>
         </div>
       )}

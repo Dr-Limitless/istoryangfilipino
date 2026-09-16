@@ -8,4 +8,4 @@ The Gabay is an animated manual, not a separate reading page. It opens on a brow
 
 The manual uses the site's existing dark/blue palette. Desktop has a chapter index beside the active page; mobile has compact numbered navigation above the page. Native dialog behavior traps focus and makes the background inert; Escape and Laktawan close it. Completion remembers the visit on this browser, while /gabay remains a direct link to the manual.
 
-Additional activity content remains a draft pending client review. Shared leaderboard activation still requires the Firebase steps in LEADERBOARD_SETUP.md.
+Client-provided activity additions and the reflection rubric belong inside the existing “Mga Aktibidad” flow. The shared leaderboard is active through Firebase.
