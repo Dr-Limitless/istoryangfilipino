@@ -3,8 +3,9 @@ import VideoCard from "./VideoCard";
 import VideoModal from "./VideoModal";
 import CourseProgress from "./CourseProgress";
 import { useVideos } from "../hooks/useVideos";
-import { loadActivityProgress, loadVideoProgress } from "../lib/progress";
 import "./VideoReel.css";
+import { activitySummary } from "../lib/activitySummary";
+import Leaderboard from "./Leaderboard";
 
 export default function VideoReel() {
   const { videos } = useVideos();
@@ -28,29 +29,19 @@ export default function VideoReel() {
   }
 
   function progressFor(video) {
-    const watched = loadVideoProgress(video.id);
-    const activity = loadActivityProgress(video.id);
-    const vocabulary = Math.min(1, (activity?.matchedVocabulary?.length || 0) / 5);
-    const gameFinished = activity?.gameStatus === "won" || activity?.gameStatus === "failed";
-    const reflection = Boolean(activity?.reflection?.trim()?.length >= 20);
-    const percent = Math.round((watched.finished ? 25 : (watched.percent || 0) * 25) + vocabulary * 25 + (gameFinished ? 25 : 0) + (reflection ? 25 : 0));
-    return {
-      watched: Boolean(watched.finished),
-      completed: Boolean(activity?.completed),
-      percent,
-      label: activity?.completed ? "Kumpleto" : activity ? "Ipagpatuloy ang gawain" : watched.finished ? "Handa na ang gawain" : watched.percent ? `${Math.round(watched.percent * 100)}% napanood` : "Hindi pa nasisimulan",
-    };
+    const { watched, activity, percent, completed } = activitySummary(video);
+    return { watched: Boolean(watched.finished), completed, percent,
+      label: completed ? "Kumpleto" : activity ? "Ipagpatuloy ang gawain" : "Hindi pa nasisimulan" };
   }
 
   return (
     <section className="reel" id="mga-kwento">
       <div className="container">
         <div className="reel__head">
-          <span className="reel__eyebrow">Mga Kwento</span>
+
           <h2 className="reel__heading">Piliin ang Kwento</h2>
           <p className="reel__intro">
-            Tatlong kwento, Panoorin online,
-            i-scan ang QR code.
+            Panoorin ang kwento o simulan agad ang gawain. May 10 talasalitaan, 10 hanap-salita, at pagninilay sa bawat aralin.
           </p>
         </div>
       </div>
@@ -70,6 +61,7 @@ export default function VideoReel() {
             </div>
           ))}
         </div>
+        <Leaderboard revision={progressRevision} />
       </div>
 
       {active && (

@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Play, QrCode } from "lucide-react";
+import { ArrowLeft, Play, QrCode, ListChecks } from "lucide-react";
 import { useState } from "react";
+import VideoModal from "../components/VideoModal";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import QRPanel from "../components/QRPanel";
@@ -11,6 +12,7 @@ import "./VideoPage.css";
 export default function VideoPage() {
   const { id } = useParams();
   const { videos, loading } = useVideos();
+  const [activitiesOpen, setActivitiesOpen] = useState(false);
   const [view, setView] = useState("watch");
 
   const video = videos.find((v) => v.id === id);
@@ -23,13 +25,13 @@ export default function VideoPage() {
         <div className="container">
           <Link to="/" className="vpage__back">
             <ArrowLeft size={15} strokeWidth={2} />
-            Lahat ng Reel
+            Lahat ng kwento
           </Link>
 
           {!video && !loading && (
             <div className="vpage__missing">
-              <p className="eyebrow">Hindi natagpuan</p>
-              <h1>Walang reel dito.</h1>
+              <p className="story-label">Hindi natagpuan</p>
+              <h1>Walang kwento dito.</h1>
               <p>Maaaring mali ang link, o tinanggal na ang video na ito.</p>
             </div>
           )}
@@ -37,8 +39,8 @@ export default function VideoPage() {
           {video && (
             <>
               <header className="vpage__head">
-                <p className="eyebrow">
-                  Reel {toRoman(video.episode)} &middot; {video.era}
+                <p className="story-label">
+                  Kwento {toRoman(video.episode)} &middot; {video.era}
                 </p>
                 <h1 className="vpage__title">{video.title}</h1>
               </header>
@@ -58,6 +60,7 @@ export default function VideoPage() {
                 >
                   <QrCode size={14} strokeWidth={2} /> QR Code
                 </button>
+                <button type="button" className="vpage__tab" onClick={() => setActivitiesOpen(true)}><ListChecks size={14} /> Gawain</button>
               </div>
 
               {view === "watch" ? (
@@ -82,7 +85,7 @@ export default function VideoPage() {
 
               {others.length > 0 && (
                 <div className="vpage__others">
-                  <p className="eyebrow">Iba pang Reel</p>
+                  <p className="story-label">Iba pang kwento</p>
                   <div className="vpage__others-list">
                     {others.map((o) => (
                       <Link to={`/video/${o.id}`} key={o.id} className="vpage__other">
@@ -97,6 +100,7 @@ export default function VideoPage() {
           )}
         </div>
       </section>
+      {video && activitiesOpen && <VideoModal video={video} initialView="activities" onClose={() => setActivitiesOpen(false)} />}
       <Footer />
     </>
   );

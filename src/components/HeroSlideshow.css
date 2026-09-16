@@ -53,69 +53,6 @@
 }
 
 
-/* Dots styling kept intact just in case you use them later, updated to match theme */
-.hslide__dots {
-  position: absolute;
-  z-index: 20;
-  right: 24px;
-  bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hslide__dot {
-  width: 16px;
-  height: 4px;
-  border-radius: 4px;
-  background: #FFFFFF;
-  opacity: 0.3;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: opacity 0.2s ease, width 0.2s ease, background 0.2s ease;
-}
-
-.hslide__dot:hover {
-  opacity: 0.8;
-}
-
-.hslide__dot.is-active {
-  width: 32px;
-  opacity: 1;
-  background: #4C6FFF;
-}
-
-.hslide__dot:focus-visible {
-  outline: 2px solid #4C6FFF;
-  outline-offset: 3px;
-}
-
-@media (max-width: 640px) {
-  .hslide__arrow {
-    top: auto;
-    bottom: 24px;
-    transform: none;
-    width: 40px;
-    height: 40px;
-    left: 12px;
-  }
-
-  .hslide__arrow:hover {
-    transform: scale(1.05);
-  }
-
-  .hslide__arrow--right {
-    right: 12px;
-    left: auto;
-  }
-
-  .hslide__dots {
-    right: 16px;
-    bottom: 76px;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hslide__frame {
     transition: opacity 0.4s ease;

@@ -1,0 +1,10 @@
+{
+  "indexes": [{
+    "collectionGroup": "leaderboardV2", "queryScope": "COLLECTION",
+    "fields": [
+      {"fieldPath": "story", "order": "ASCENDING"},
+      {"fieldPath": "score", "order": "DESCENDING"},
+      {"fieldPath": "timeUsed", "order": "ASCENDING"}
+    ]
+  }], "fieldOverrides": []
+}

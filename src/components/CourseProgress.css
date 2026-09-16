@@ -12,3 +12,5 @@
 .teacher-report{display:none}
 @media(max-width:650px){.course-progress__top{align-items:flex-start}.course-progress__ring{width:72px;height:72px;flex-basis:72px}.course-progress__stats{grid-template-columns:1fr}.course-award{grid-template-columns:auto 1fr}.course-award label,.course-award button{grid-column:1/-1}.course-award button{min-height:46px}}
 @media print{body>*{display:none!important}#root{display:block!important}.reel{padding:0;background:#fff!important}.reel>*{display:none!important}.reel .container:has(.course-progress){display:block!important}.course-progress{display:block!important;color:#000!important;background:#fff!important;border:0;box-shadow:none}.course-progress>*{display:none!important}.teacher-report{display:block!important}.teacher-report section{break-inside:avoid;border-top:1px solid #999;padding:10px 0}.teacher-report h1,.teacher-report h2,.teacher-report p{color:#000!important}}
+
+.course-progress__stats{flex-wrap:wrap}.course-progress__bar span{background:var(--accent)}

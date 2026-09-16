@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /videos/{video} { allow read: if true; }
+    match /leaderboardV2/{entry} {
+      function valid() {
+        let d = request.resource.data;
+        return request.auth != null
+          && d.keys().hasOnly(['nickname', 'story', 'uid', 'version', 'score', 'timeUsed', 'updatedAt'])
+          && d.keys().hasAll(['nickname', 'story', 'uid', 'version', 'score', 'timeUsed', 'updatedAt'])
+          && d.uid == request.auth.uid && entry == request.auth.uid + '_' + d.story
+          && d.story in ['ang-ama', 'bangkang-papel', 'pamana']
+          && d.version == 2 && d.nickname is string && d.nickname.size() >= 2 && d.nickname.size() <= 24
+          && d.score is int && d.score >= 10 && d.score <= 20
+          && d.timeUsed is int && d.timeUsed >= 0 && d.timeUsed <= 600
+          && d.updatedAt == request.time;
+      }
+      allow list: if request.query.limit != null && request.query.limit <= 30;
+      allow get: if request.auth != null && entry.matches(request.auth.uid + '_.*');
+      allow create: if valid();
+      allow update: if valid() && resource.data.uid == request.auth.uid
+        && request.resource.data.story == resource.data.story
+        && (request.resource.data.score > resource.data.score
+          || (request.resource.data.score == resource.data.score && request.resource.data.timeUsed <= resource.data.timeUsed));
+      allow delete: if false;
+    }
+  }
+}

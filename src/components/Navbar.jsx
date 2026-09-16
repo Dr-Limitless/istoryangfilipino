@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import SunMark from "./SunMark";
+
 import "./Navbar.css";
+import { useManual } from "../lib/manualContext";
 
 export default function Navbar() {
+  const { openManual } = useManual();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -25,6 +27,7 @@ export default function Navbar() {
             Storyang <strong>Filipino</strong>
           </span>
         </Link>
+        <nav className="nav__links" aria-label="Pangunahing nabigasyon"><a href="/#mga-kwento">Mga kwento</a><a href="/#talaan">Mga puntos</a><button type="button" onClick={openManual}>Gabay</button></nav>
       </div>
     </header>
   );

@@ -1,9 +1,4 @@
-// Firebase setup for Istoryang Filipino.
-// No auth is used anywhere in this app on purpose — the site is fully public,
-// there is no login or registration. Firestore is used only to store the
-// metadata (title, description, video URL, thumbnail) for the 3 videos so
-// they can be edited from the Firebase console without redeploying the site.
-
+// Public video metadata; anonymous authentication is used only when learners opt into the leaderboard.
 import { initializeApp, getApps } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";

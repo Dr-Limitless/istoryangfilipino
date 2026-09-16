@@ -1,7 +1,9 @@
 import SunMark from "./SunMark";
 import "./Footer.css";
+import { useManual } from "../lib/manualContext";
 
 export default function Footer() {
+  const { openManual } = useManual();
   return (
     <footer className="footer">
       <div className="footer__sprocket" aria-hidden="true" />
@@ -14,27 +16,27 @@ export default function Footer() {
           </div>
           <p className="footer__desc">
             Tatlong kwento,
-            handang ibahagi. Libreng panoorin, walang kailangang account.
+            handang ibahagi. Libreng panoorin, walang kailangang rehistro.
           </p>
         </div>
 
         <nav className="footer__col">
-          <p className="eyebrow footer__heading">Ang Arkibo</p>
+          <p className="footer__heading">Mga aralin</p>
           <ul className="footer__links">
             <li>
-              <a href="#mga-kwento">Tatlong Kwento</a>
+              <a href="/#mga-kwento">Tatlong Kwento</a>
             </li>
             <li>
-              <a href="#mga-kwento">I-scan ang QR</a>
+              <a href="/#mga-kwento">I-scan ang QR</a>
             </li>
             <li>
-              <a href="/">Tungkol sa Proyekto</a>
+              <button type="button" onClick={openManual}>Gabay sa paggamit</button>
             </li>
           </ul>
         </nav>
 
         <div className="footer__col">
-          <p className="eyebrow footer__heading">Para sa mga Guro</p>
+          <p className="footer__heading">Para sa mga Guro</p>
           <p className="footer__note">
             Mga dokumentaryong galing sa pampublikong arkibo at lokal na pananaliksik. Libreng
             ipamahagi sa silid-aralan — i-print lang ang QR ng bawat reel.
@@ -43,7 +45,7 @@ export default function Footer() {
       </div>
 
       <div className="container footer__bottom">
-        <p className="footer__copy">Bukas para sa lahat, walang login.</p>
+        <p className="footer__copy">Bukas para sa lahat, walang kailangang password.</p>
         <p className="footer__copy">&copy; {new Date().getFullYear()} Storyang Filipino</p>
       </div>
     </footer>

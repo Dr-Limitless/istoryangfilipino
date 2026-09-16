@@ -88,8 +88,8 @@
 .word-grid button.is-hint { z-index: 2; border-color: #fde047; background: linear-gradient(135deg, #fbbf24, #fb923c); color: #2b1700; box-shadow: 0 0 16px rgba(251,191,36,.52); animation: hintTrail 1.25s ease-in-out infinite; animation-delay: calc(var(--hint-order) * 80ms); }
 .word-grid button.is-hint-start::after,
 .word-grid button.is-hint-end::after { position: absolute; z-index: 3; top: -8px; padding: 2px 4px; border-radius: 4px; background: #111827; color: #fff; font-size: .45rem; font-weight: 900; letter-spacing: .04em; pointer-events: none; }
-.word-grid button.is-hint-start::after { left: -5px; content: "START"; }
-.word-grid button.is-hint-end::after { right: -5px; content: "END"; }
+.word-grid button.is-hint-start::after { left: -5px; content: "SIMULA"; }
+.word-grid button.is-hint-end::after { right: -5px; content: "WAKAS"; }
 .word-grid.is-game-over button { cursor: default; opacity: .72; }
 .word-list > p { margin-bottom: 12px; color: #9999a3; font-size: .76rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
 .word-list ul { display: grid; gap: 9px; margin: 0 0 14px; padding: 0; list-style: none; }
@@ -279,3 +279,5 @@
   .activity-button { flex: 1; }
   .matching-mobile-cue { top: 92px; }
 }
+
+.activity-update{color:#c0c0cb;font-size:.9rem;line-height:1.7;margin:16px 0}.word-grid button:focus-visible{outline-offset:0;z-index:1}.completion__results small{font-size:.75rem;color:#b9bac6}.matching-progress strong{font-variant-numeric:tabular-nums}

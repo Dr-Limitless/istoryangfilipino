@@ -162,3 +162,4 @@
     font-size: 0.78rem;
   }
 }
+.footer__links button{background:transparent;border:0;color:#aeb0bd;padding:8px 0;font:inherit;min-height:44px;text-align:left}.footer__grid{padding-left:var(--edge);padding-right:var(--edge)}

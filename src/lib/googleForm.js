@@ -27,7 +27,7 @@ export async function submitAnonymousActivityResult(video, result) {
     [FIELDS.storyTitle]: video.title,
     [FIELDS.reflection]: result.reflectionText,
     [FIELDS.vocabularyScore]: `${result.vocabularyScore}/${result.vocabularyTotal}`,
-    [FIELDS.wordSearchResult]: result.wordSearchStatus === "won" ? "Nakapasa" : "Time Out",
+    [FIELDS.wordSearchResult]: result.wordSearchStatus === "won" ? "Nakapasa" : "Naubos ang oras",
     [FIELDS.attempts]: String(result.attempts),
     [FIELDS.completionTime]: formatDuration(result.timeUsed),
     [FIELDS.anonymousReference]: result.submissionReference,
@@ -36,6 +36,7 @@ export async function submitAnonymousActivityResult(video, result) {
   await fetch(FORM_RESPONSE_URL, {
     method: "POST",
     mode: "no-cors",
+    signal: AbortSignal.timeout(10000),
     headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
     body,
   });

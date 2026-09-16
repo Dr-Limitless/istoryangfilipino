@@ -221,3 +221,4 @@ hr {
     --container: 100%;
   }
 }
+:root{--accent-text:#a5b7ff}section[id]{scroll-margin-top:120px}button:disabled{cursor:not-allowed}input,textarea{caret-color:var(--accent)}input::placeholder,textarea::placeholder{color:#aeb0bd;opacity:1}a{text-underline-offset:5px}

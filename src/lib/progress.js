@@ -1,3 +1,4 @@
+import { ACTIVITY_VERSION } from "../data/activities.js";
 const PREFIX = "istoryang-filipino";
 
 function readJson(key, fallback) {
@@ -38,11 +39,17 @@ export function saveVideoProgress(videoId, progress) {
 }
 
 export function loadActivityProgress(videoId) {
-  return readJson(activityKey(videoId), null);
+  const saved = readJson(activityKey(videoId), null);
+  if (!saved || saved.version === ACTIVITY_VERSION) return saved;
+  // Keep prior vocabulary and reflection; the enlarged puzzle has different cells.
+  return { ...saved, version: ACTIVITY_VERSION, expanded: true, step: 0,
+    completed: false, result: null, foundWords: [], attempts: 0,
+    gameStatus: "ready", gameDeadline: null, timeRemaining: 600, hintsLeft: 2 };
+
 }
 
 export function saveActivityProgress(videoId, progress) {
-  writeJson(activityKey(videoId), progress);
+  writeJson(activityKey(videoId), { ...progress, version: ACTIVITY_VERSION });
 }
 
 export function clearActivityProgress(videoId) {
@@ -55,5 +62,5 @@ export function loadLearnerProfile() {
 }
 
 export function saveLearnerProfile(profile) {
-  writeJson(learnerKey, profile);
+  writeJson(learnerKey, { ...loadLearnerProfile(), ...profile });
 }

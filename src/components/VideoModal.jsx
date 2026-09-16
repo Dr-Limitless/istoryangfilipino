@@ -9,11 +9,12 @@ import "./VideoModal.css";
 
 export default function VideoModal({ video, initialView = "watch", onClose, onProgressChange }) {
   const [view, setView] = useState(initialView);
-  const [activitiesComplete, setActivitiesComplete] = useState(false);
-  const [activityResult, setActivityResult] = useState(null);
-  const [hasFinishedVideo, setHasFinishedVideo] = useState(false);
-  const [watchPercent, setWatchPercent] = useState(0);
+  const [activitiesComplete, setActivitiesComplete] = useState(() => Boolean(loadActivityProgress(video.id)?.completed));
+  const [activityResult, setActivityResult] = useState(() => loadActivityProgress(video.id)?.result ?? null);
+  const [hasFinishedVideo, setHasFinishedVideo] = useState(() => Boolean(loadVideoProgress(video.id)?.finished));
+  const [watchPercent, setWatchPercent] = useState(() => loadVideoProgress(video.id)?.percent ?? 0);
   const [resetAction, setResetAction] = useState(null);
+  const modalRef = useRef(null);
   const youtubeFrameRef = useRef(null);
   const watchedSecondsRef = useRef(0);
   const videoDurationRef = useRef(0);
@@ -86,7 +87,7 @@ export default function VideoModal({ video, initialView = "watch", onClose, onPr
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  function reviewReflection() {
+  function reviewPagninilay() {
     const saved = loadActivityProgress(video.id);
     saveActivityProgress(video.id, { ...saved, completed: false, step: 2, updatedAt: Date.now() });
     setActivitiesComplete(false);
@@ -137,19 +138,26 @@ export default function VideoModal({ video, initialView = "watch", onClose, onPr
   }
 
   useEffect(() => {
+    const previousFocus = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    modalRef.current?.querySelector(".modal__close")?.focus();
     function onKey(e) {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") { if (!e.defaultPrevented) onClose(); return; }
+      if (e.key !== "Tab") return;
+      const scope = modalRef.current?.querySelector(".reset-confirm, .game-result") || modalRef.current;
+      const controls = [...(scope?.querySelectorAll('button:not(:disabled), a[href], input:not(:disabled), textarea:not(:disabled), [tabindex="0"]') || [])].filter(el => el.offsetParent !== null);
+      if (!controls.length) return;
+      const first = controls[0], last = controls[controls.length - 1];
+      if (!scope.contains(document.activeElement) || (e.shiftKey && document.activeElement === first)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = previousOverflow; previousFocus?.focus(); };
   }, [onClose]);
 
   return (
-    <div className="modal" role="dialog" aria-modal="true" aria-label={video.title}>
+    <div ref={modalRef} className="modal" role="dialog" aria-modal="true" aria-label={video.title}>
       <div className="modal__scrim" onClick={onClose} />
 
       <div className={`modal__panel ${view === "activities" ? "modal__panel--activities" : ""}`}>
@@ -162,7 +170,7 @@ export default function VideoModal({ video, initialView = "watch", onClose, onPr
           </button>
         </header>
 
-       
+
         <div className="modal__tabs" role="tablist">
           <button
             type="button"
@@ -242,12 +250,12 @@ export default function VideoModal({ video, initialView = "watch", onClose, onPr
           )}
           {activitiesComplete && (
             <div hidden={view !== "activities"}>
-              <ActivityComplete video={video} result={activityResult} onHome={returnHome} onReview={reviewReflection} onRetake={() => setResetAction("word-search")} onRestart={() => setResetAction("all")} onResubmit={resubmitActivityResult} />
+              <ActivityComplete video={video} result={activityResult} onHome={returnHome} onReview={reviewPagninilay} onRetake={() => setResetAction("word-search")} onRestart={() => setResetAction("all")} onResubmit={resubmitActivityResult} />
             </div>
           )}
         </div>
 
-        {resetAction && <div className="reset-confirm" role="dialog" aria-modal="true" aria-labelledby="reset-confirm-title"><div><h3 id="reset-confirm-title">{resetAction === "all" ? "I-reset ang lahat?" : "Ulitin ang Word Search?"}</h3><p>{resetAction === "all" ? "Mabubura ang matching, Word Search, at Reflection progress para sa kwentong ito." : "Magsisimula muli ang 10 minutong timer. Mananatili ang Talasalitaan at Reflection."}</p><span><button type="button" onClick={() => setResetAction(null)}>Kanselahin</button><button type="button" onClick={confirmReset}>Magpatuloy</button></span></div></div>}
+        {resetAction && <div className="reset-confirm" role="dialog" aria-modal="true" aria-labelledby="reset-confirm-title"><div><h3 id="reset-confirm-title">{resetAction === "all" ? "I-reset ang lahat?" : "Ulitin ang Hanap-salita?"}</h3><p>{resetAction === "all" ? "Mabubura ang pagtatambal, hanap-salita, at pagninilay para sa kwentong ito." : "Magsisimula muli ang 10 minutong timer. Mananatili ang Talasalitaan at Pagninilay."}</p><span><button type="button" onClick={() => setResetAction(null)}>Kanselahin</button><button type="button" onClick={confirmReset}>Magpatuloy</button></span></div></div>}
       </div>
     </div>
   );

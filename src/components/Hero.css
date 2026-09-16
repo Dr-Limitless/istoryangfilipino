@@ -210,3 +210,4 @@
     transform: none;
   }
 }
+.hero::before{display:none}.hero__guide{align-self:flex-start;background:transparent;border:0;padding:10px 0;color:#c3c5d1;text-decoration:underline;font:inherit;font-size:.9rem;pointer-events:auto;min-height:44px}.hero__title-line,.hero__sub,.hero__cue{opacity:1}.hero__cue{box-shadow:0 8px 20px rgba(0,0,0,.25)}@media(max-width:640px){.hero{padding-top:120px;min-height:78vh}.hero__text{padding-bottom:100px}}
