@@ -379,13 +379,13 @@ export default function ActivitiesPanel({ video, onComplete }) {
     <section className="activities" aria-labelledby="activities-heading">
       <div className="activities__intro">
 
-        <h4 id="activities-heading">Mga Aktibidad</h4>
+        <h4 id="activities-heading">Mga Gawain</h4>
         <p>Palalimin ang iyong pag-unawa sa “{video.title}.”</p>
         <span className="activities__saved"><CloudCheck size={14} /> {savedAt ? "Naka-save ang progreso" : "Awtomatikong nase-save"}</span>
       </div>
 
       {savedProgress?.expanded && <p className="activity-update" role="status">Na-update ang mga gawain ayon sa materyal ng guro. Napanatili ang tugmang sagot sa talasalitaan at pagninilay; magsisimula muli ang hanap-salita.</p>}
-      <ol className="activities__progress" aria-label="Progreso sa mga aktibidad">
+      <ol className="activities__progress" aria-label="Progreso sa mga gawain">
         {STEP_LABELS.map((label, index) => (
           <li key={label} className={`${index === step ? "is-current" : ""} ${index < step ? "is-done" : ""}`} aria-current={index === step ? "step" : undefined}>
             <span>{index < step ? <Check size={13} aria-hidden="true" /> : index + 1}</span>
@@ -642,7 +642,7 @@ export function ActivityComplete({ video, result, onHome, onReview, onRetake, on
       <h3 id="completion-title">{passedWordSearch ? "Mahusay!" : "Natapos mo ang aralin!"}</h3>
       <p>{passedWordSearch
         ? `Kumpleto at matagumpay mong natapos ang lahat ng aktibidad para sa “${video.title}.”`
-        : `Natapos mo ang mga aktibidad para sa “${video.title}.” Naubos man ang oras sa Hanap-salita, mahalaga ang iyong pagpapatuloy hanggang Pagninilay.`}</p>
+        : `Natapos mo ang mga gawain para sa “${video.title}.” Naubos man ang oras sa Hanap-salita, mahalaga ang iyong pagpapatuloy hanggang Pagninilay.`}</p>
       <div className="completion__results">
         <article><Check size={16} aria-hidden="true" /><span>Talasalitaan</span><strong>{result?.vocabularyScore ?? 0}/{result?.vocabularyTotal ?? 10}</strong></article>
         <article className={passedWordSearch ? "is-pass" : "is-timeout"}>{passedWordSearch ? <Trophy size={16} aria-hidden="true" /> : <TriangleAlert size={16} aria-hidden="true" />}<span>Hanap-salita</span><strong>{result?.wordsFound ?? 0}/{result?.wordsTotal ?? 10}</strong><small>{passedWordSearch ? "Kumpleto" : "Naubos ang oras"}</small></article>

@@ -76,7 +76,7 @@ export default function CourseProgress({ videos, revision }) {
       <div className="course-progress__stories">
         {progress.map(({ video, percent, completed: done, activity }) => (
           <article key={video.id}>
-            <div><strong>{video.title}</strong><span>{done ? "Kumpleto" : activity ? "Ipagpatuloy ang gawain" : "Mga aktibidad"}</span></div>
+            <div><strong>{video.title}</strong><span>{done ? "Kumpleto" : activity ? "Ipagpatuloy ang gawain" : "Mga gawain"}</span></div>
             <div className="course-progress__bar"><span style={{ width: `${percent}%` }} /></div>
             <small>{percent}% · {activity?.gameStatus === "won" ? "Hanap-salita na kumpleto" : activity?.gameStatus === "failed" ? "Naubos ang oras" : "Hindi pa kumpleto"}</small>
           </article>

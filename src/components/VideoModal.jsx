@@ -196,9 +196,9 @@ export default function VideoModal({ video, initialView = "watch", onClose, onPr
             aria-selected={view === "activities"}
             className={`modal__tab ${view === "activities" ? "is-active" : ""}`}
             onClick={() => setView("activities")}
-            title="Buksan ang mga aktibidad"
+            title="Buksan ang mga gawain"
           >
-            <ListChecks size={15} strokeWidth={2} /> Mga Aktibidad
+            <ListChecks size={15} strokeWidth={2} /> Mga Gawain
           </button>
         </div>
 
