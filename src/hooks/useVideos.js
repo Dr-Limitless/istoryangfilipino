@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { placeholderVideos } from "../data/placeholderVideos";
+import { getStoryVideoUrl } from "../data/storyVideoSources";
 
 export function useVideos() {
   const [videos, setVideos] = useState(placeholderVideos);
@@ -22,7 +23,8 @@ export function useVideos() {
               "Ang matalinong pacing nito ay nagbibigay-daan para sa matingkad na mga detalye, na ginagawa kaming lumilipad sa dingding ng kuwento ng pamilya ng mga paghihirap sa bukid.",
               "Maingat ang takbo ng kuwento at malinaw ang mga detalye, kaya nasusubaybayan ang pamilya at ang kanilang mga paghihirap sa bukid.",
             );
-            return { ...data, id: d.id, description };
+            const video = { ...data, id: d.id, description };
+            return { ...video, videoUrl: getStoryVideoUrl(video) };
           });
 
           setVideos(docs);

@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import QRPanel from "../components/QRPanel";
 import { useVideos } from "../hooks/useVideos";
-import { toRoman, isYouTubeUrl, toYouTubeEmbed } from "../lib/video";
+import { toRoman, isGoogleDriveUrl, isYouTubeUrl, toGoogleDriveEmbed, toYouTubeEmbed } from "../lib/video";
 import "./VideoPage.css";
 
 export default function VideoPage() {
@@ -71,6 +71,13 @@ export default function VideoPage() {
                         src={toYouTubeEmbed(video.videoUrl)}
                         title={video.title}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : isGoogleDriveUrl(video.videoUrl) ? (
+                      <iframe
+                        src={toGoogleDriveEmbed(video.videoUrl)}
+                        title={video.title}
+                        allow="autoplay; fullscreen"
                         allowFullScreen
                       />
                     ) : (

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { X, Play, QrCode, ListChecks } from "lucide-react";
 import QRPanel from "./QRPanel";
 import ActivitiesPanel, { ActivityComplete } from "./ActivitiesPanel";
-import { isYouTubeUrl, toYouTubeEmbed } from "../lib/video";
+import { isGoogleDriveUrl, isYouTubeUrl, toGoogleDriveEmbed, toYouTubeEmbed } from "../lib/video";
 import { clearActivityProgress, loadActivityProgress, loadVideoProgress, saveActivityProgress, saveVideoProgress } from "../lib/progress";
 import { submitAnonymousActivityResult } from "../lib/googleForm";
 import "./VideoModal.css";
@@ -214,6 +214,13 @@ export default function VideoModal({ video, initialView = "watch", onClose, onPr
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     onLoad={registerYouTubeListener}
+                  />
+                ) : isGoogleDriveUrl(video.videoUrl) ? (
+                  <iframe
+                    src={toGoogleDriveEmbed(video.videoUrl)}
+                    title={video.title}
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
                   />
                 ) : (
                   <video
